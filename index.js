@@ -47,8 +47,8 @@ require('./Admin/route/usersRoute')(app);
 require('./Admin/route/reportRoute')(app);
 require('./Admin/route/machineRoute')(app);
 
-const port=5000 || process.env.PORT;
+let port=process.env.PORT || '5000'
 app.listen(port, ()=>{    
-console.log('running')
+console.log('running',port)
  
 })
