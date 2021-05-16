@@ -47,6 +47,7 @@ exports.signUp = async (req, res) => {
         };
          mysqlConnection.query('INSERT INTO users (userid, firstname, lastname, mobile,role,isactive,otp,isbusy,uniqueid) VALUES (uuid(),"' + params.firstName + '","' + params.lastName + '","' + params.mobile + '","' + params.role + '",' + params.isActive + ',"' + params.otp + '",' + params.isbusy + ',"'+uniqueid+'")', (err, result) => {
             if (!err) {
+                SMS.sendSMS(OTPnumber,req.body.mobile)
                 res.status(200).send({
                     message: "User added Successfully",
                     data: result,
